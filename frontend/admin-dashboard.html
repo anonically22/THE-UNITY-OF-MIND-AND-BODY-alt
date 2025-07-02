@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Unity of Mind and Body</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🧘‍♂️ Unity of Mind & Body (Admin)</div>
+    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="#" id="admin-logout-btn">Logout</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="active">
+      <h2>Admin Dashboard</h2>
+      <div class="card">
+        <h3>Manage Resources</h3>
+        <form id="resource-form">
+          <input type="hidden" name="id" />
+          <input type="text" name="title" required placeholder="Title" />
+          <input type="text" name="description" placeholder="Description" />
+          <input type="text" name="image_url" placeholder="Image URL" />
+          <button type="submit" class="btn">Add Resource</button>
+          <button type="button" id="cancel-edit" style="display:none;">Cancel Edit</button>
+        </form>
+        <table id="resources-table" border="1" style="width:100%;background:#fff;border-radius:8px;overflow:hidden;margin-top:1rem;">
+          <thead><tr><th>Title</th><th>Description</th><th>Image</th><th>Actions</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>All Users</h3>
+        <table id="users-table" border="1" style="width:100%;background:#fff;border-radius:8px;overflow:hidden;">
+          <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>All Bookings</h3>
+        <table id="bookings-table" border="1" style="width:100%;background:#fff;border-radius:8px;overflow:hidden;">
+          <thead><tr><th>ID</th><th>User ID</th><th>Service</th><th>Date</th><th>Time</th><th>Notes</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h3>All Feedback</h3>
+        <table id="feedback-table" border="1" style="width:100%;background:#fff;border-radius:8px;overflow:hidden;">
+          <thead><tr><th>ID</th><th>User ID</th><th>Message</th><th>Created At</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div>Contact: unitymindbody@example.com | 📞 123-456-7890</div>
+    <div class="socials">
+      <span>🌐</span> <span>📘</span> <span>🐦</span> <span>📸</span>
+    </div>
+    <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
+  </footer>
+  <script src="js/main.js"></script>
+  <script>
+  // Require admin login
+  const token = localStorage.getItem('token');
+  const role = localStorage.getItem('role');
+  if (!token || role !== 'admin') window.location.href = 'admin-login.html';
+
+  document.getElementById('admin-logout-btn').onclick = (e) => {
+    e.preventDefault();
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('role');
+    window.location.href = 'admin-login.html';
+  };
+
+  // Fetch all users
+  fetch('http://localhost:5000/api/admin/users', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  })
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.querySelector('#users-table tbody');
+      tbody.innerHTML = '';
+      (data.users || []).forEach(u => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${u.id}</td><td>${u.name}</td><td>${u.email}</td><td>${u.role}</td>`;
+        tbody.appendChild(tr);
+      });
+    });
+
+  // Fetch all bookings
+  fetch('http://localhost:5000/api/admin/bookings', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  })
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.querySelector('#bookings-table tbody');
+      tbody.innerHTML = '';
+      (data.bookings || []).forEach(b => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${b.id}</td><td>${b.user_id}</td><td>${b.service}</td><td>${b.date}</td><td>${b.time}</td><td>${b.notes || ''}</td>`;
+        tbody.appendChild(tr);
+      });
+    });
+
+  // Fetch all feedback
+  fetch('http://localhost:5000/api/admin/feedback', {
+    headers: { 'Authorization': 'Bearer ' + token }
+  })
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.querySelector('#feedback-table tbody');
+      tbody.innerHTML = '';
+      (data.feedback || []).forEach(f => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${f.id}</td><td>${f.user_id}</td><td>${f.message}</td><td>${f.created_at}</td>`;
+        tbody.appendChild(tr);
+      });
+    });
+
+  // Resources CRUD
+  const resourceForm = document.getElementById('resource-form');
+  const resourcesTable = document.getElementById('resources-table').querySelector('tbody');
+  let editingId = null;
+
+  function loadResources() {
+    fetch('http://localhost:5000/api/admin/resources', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    })
+      .then(res => res.json())
+      .then(data => {
+        resourcesTable.innerHTML = '';
+        (data.resources || []).forEach(r => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${r.title}</td><td>${r.description || ''}</td><td>${r.image_url ? `<img src='${r.image_url}' style='max-width:60px;'>` : ''}</td><td>
+            <button onclick="editResource('${r.id}','${r.title.replace(/'/g, '\\'')}', '${(r.description||'').replace(/'/g, '\\'')}', '${(r.image_url||'').replace(/'/g, '\\'')}')">Edit</button>
+            <button onclick="deleteResource('${r.id}')">Delete</button>
+          </td>`;
+          resourcesTable.appendChild(tr);
+        });
+      });
+  }
+  window.editResource = (id, title, description, image_url) => {
+    editingId = id;
+    resourceForm.id.value = id;
+    resourceForm.title.value = title;
+    resourceForm.description.value = description;
+    resourceForm.image_url.value = image_url;
+    resourceForm.querySelector('button[type="submit"]').textContent = 'Update Resource';
+    document.getElementById('cancel-edit').style.display = '';
+  };
+  window.deleteResource = (id) => {
+    if (!confirm('Delete this resource?')) return;
+    fetch(`http://localhost:5000/api/admin/resources/${id}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': 'Bearer ' + token }
+    }).then(() => loadResources());
+  };
+  resourceForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const title = resourceForm.title.value;
+    const description = resourceForm.description.value;
+    const image_url = resourceForm.image_url.value;
+    const id = resourceForm.id.value;
+    if (id) {
+      // Update
+      await fetch(`http://localhost:5000/api/admin/resources/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify({ title, description, image_url })
+      });
+    } else {
+      // Create
+      await fetch('http://localhost:5000/api/admin/resources', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+        body: JSON.stringify({ title, description, image_url })
+      });
+    }
+    resourceForm.reset();
+    resourceForm.querySelector('button[type="submit"]').textContent = 'Add Resource';
+    document.getElementById('cancel-edit').style.display = 'none';
+    editingId = null;
+    loadResources();
+  };
+  document.getElementById('cancel-edit').onclick = () => {
+    resourceForm.reset();
+    resourceForm.querySelector('button[type="submit"]').textContent = 'Add Resource';
+    document.getElementById('cancel-edit').style.display = 'none';
+    editingId = null;
+  };
+  loadResources();
+  </script>
+</body>
+</html> 

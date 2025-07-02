@@ -3,35 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Unity of Mind and Body - Login</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Admin Login - Unity of Mind and Body</title>
+  <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
-    <div class="logo">🧘‍♂️ Unity of Mind & Body</div>
+    <div class="logo">🧘‍♂️ Unity of Mind & Body (Admin)</div>
     <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </div>
     <ul class="nav-links">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="login.html" class="active">Login</a></li>
+      <li><a href="admin-login.html" class="active">Admin Login</a></li>
+      <li><a href="admin-signup.html">Admin Sign Up</a></li>
     </ul>
   </nav>
   <main>
     <section class="auth-container active">
-      <h2>Login</h2>
-      <form id="login-form">
-        <input type="email" name="email" required placeholder="Email" />
+      <h2>Admin Login</h2>
+      <form id="admin-login-form">
+        <input type="email" name="email" required placeholder="Admin Email" />
         <input type="password" name="password" required placeholder="Password" />
         <button type="submit" class="btn">Login</button>
       </form>
-      <p style="text-align:center;margin-top:1rem;">Don't have an account? <a href="signup.html">Sign up</a></p>
+      <p style="text-align:center;margin-top:1rem;">No admin account? <a href="admin-signup.html">Sign up</a></p>
     </section>
   </main>
   <footer class="footer">
@@ -41,12 +38,12 @@
     </div>
     <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
   </footer>
-  <script src="main.js"></script>
+  <script src="js/main.js"></script>
   <script>
   function parseJwt(token) {
     try { return JSON.parse(atob(token.split('.')[1])); } catch (e) { return null; }
   }
-  const loginForm = document.getElementById('login-form');
+  const loginForm = document.getElementById('admin-login-form');
   loginForm.onsubmit = async (e) => {
     e.preventDefault();
     const email = loginForm.email.value;
@@ -54,14 +51,19 @@
     const res = await fetch('http://localhost:5000/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
+      body: JSON.stringify({ email, password, role: 'admin' })
     });
     const data = await res.json();
     if (data.token) {
-      localStorage.setItem('token', data.token);
       const user = parseJwt(data.token);
+      if (user.role !== 'admin') {
+        alert('Not an admin account.');
+        return;
+      }
+      localStorage.setItem('token', data.token);
       localStorage.setItem('userName', user.name);
-      window.location.href = 'dashboard.html';
+      localStorage.setItem('role', user.role);
+      window.location.href = 'admin-dashboard.html';
     } else {
       alert(data.error || 'Login failed');
     }
