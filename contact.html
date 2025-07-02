@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unity of Mind and Body - Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🧘‍♂️ Unity of Mind & Body</div>
+    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="login.html">Login/Register</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="active">
+      <h2>Feedback / Contact</h2>
+      <form id="feedback-form">
+        <input type="text" name="name" required placeholder="Name" />
+        <input type="email" name="email" required placeholder="Email" />
+        <textarea name="message" required placeholder="Message"></textarea>
+        <button type="submit" class="btn">Submit Feedback</button>
+      </form>
+      <div id="feedback-confirmation" style="display:none;">Thank you for your feedback. We will get back to you soon.</div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div>Contact: unitymindbody@example.com | 📞 123-456-7890</div>
+    <div class="socials">
+      <span>🌐</span> <span>📘</span> <span>🐦</span> <span>📸</span>
+    </div>
+    <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
+  </footer>
+  <script>
+  // Require login
+  if (!localStorage.getItem('token')) window.location.href = 'login.html';
+
+  const feedbackForm = document.getElementById('feedback-form');
+  const feedbackConfirmation = document.getElementById('feedback-confirmation');
+
+  feedbackForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const message = feedbackForm.message.value;
+    const token = localStorage.getItem('token');
+    const res = await fetch('http://localhost:5000/api/feedback', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({ message })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      feedbackForm.style.display = 'none';
+      feedbackConfirmation.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 2000);
+    } else {
+      alert(data.error || 'Feedback failed');
+    }
+  };
+  </script>
+  <script src="main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unity of Mind and Body - Book a Session</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🧘‍♂️ Unity of Mind & Body</div>
+    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html">Login/Register</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="active">
+      <h2>Book a Session</h2>
+      <form id="booking-form">
+        <input type="text" name="name" required placeholder="Name" />
+        <input type="email" name="email" required placeholder="Email" />
+        <select name="service" id="booking-service">
+          <option value="Art Therapy">Art Therapy</option>
+          <option value="Group Therapy">Group Therapy</option>
+          <option value="Yoga/Meditation">Yoga/Meditation</option>
+        </select>
+        <input type="date" name="date" required />
+        <input type="time" name="time" required />
+        <textarea name="notes" placeholder="Notes"></textarea>
+        <button type="submit" class="btn">Book Session</button>
+      </form>
+      <div id="booking-confirmation" style="display:none;"></div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div>Contact: unitymindbody@example.com | 📞 123-456-7890</div>
+    <div class="socials">
+      <span>🌐</span> <span>📘</span> <span>🐦</span> <span>📸</span>
+    </div>
+    <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
+  </footer>
+  <script>
+  // Require login
+  if (!localStorage.getItem('token')) window.location.href = 'login.html';
+
+  const bookingForm = document.getElementById('booking-form');
+  const bookingConfirmation = document.getElementById('booking-confirmation');
+
+  // Optionally, autofill name if available
+  if (localStorage.getItem('userName')) bookingForm.name.placeholder = localStorage.getItem('userName');
+
+  bookingForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const service = bookingForm.service.value;
+    const date = bookingForm.date.value;
+    const time = bookingForm.time.value;
+    const notes = bookingForm.notes.value;
+    const token = localStorage.getItem('token');
+    const res = await fetch('http://localhost:5000/api/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({ service, date, time, notes })
+    });
+    const data = await res.json();
+    if (res.ok) {
+      bookingForm.style.display = 'none';
+      bookingConfirmation.style.display = 'block';
+      bookingConfirmation.innerHTML = `Thank you for booking <b>${service}</b> on <b>${date}</b> at <b>${time}</b>.`;
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 2000);
+    } else {
+      alert(data.error || 'Booking failed');
+    }
+  };
+  </script>
+  <script src="main.js"></script>
+</body>
+</html> 

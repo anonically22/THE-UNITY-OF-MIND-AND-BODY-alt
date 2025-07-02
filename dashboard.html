@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unity of Mind and Body - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🧘‍♂️ Unity of Mind & Body</div>
+    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#" id="logout-btn">Logout</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="dashboard-welcome active">
+      <h2>Hi, <span id="dashboard-username"></span>!</h2>
+      <div class="card upcoming-sessions">
+        <h3>Upcoming Sessions</h3>
+        <ul id="upcoming-list"></ul>
+      </div>
+      <div class="dashboard-links">
+        <a href="services.html" class="btn">Book New Session</a>
+        <a href="resources.html" class="btn">View Resources</a>
+        <a href="contact.html" class="btn">Submit Feedback</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div>Contact: unitymindbody@example.com | 📞 123-456-7890</div>
+    <div class="socials">
+      <span>🌐</span> <span>📘</span> <span>🐦</span> <span>📸</span>
+    </div>
+    <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
+  </footer>
+  <script src="main.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const name = localStorage.getItem('userName') || 'User';
+    document.getElementById('dashboard-username').textContent = name;
+    document.getElementById('logout-btn').onclick = (e) => {
+      e.preventDefault();
+      localStorage.removeItem('token');
+      localStorage.removeItem('userName');
+      window.location.href = 'login.html';
+    };
+
+    // Require login
+    const token = localStorage.getItem('token');
+    if (!token) window.location.href = 'login.html';
+
+    // Fetch bookings
+    const res = await fetch('http://localhost:5000/api/bookings', {
+      headers: { 'Authorization': 'Bearer ' + token }
+    });
+    const data = await res.json();
+    const list = document.getElementById('upcoming-list');
+    list.innerHTML = '';
+    if (res.ok && data.bookings && data.bookings.length) {
+      data.bookings.forEach(b => {
+        const li = document.createElement('li');
+        li.innerHTML = `<b>${b.service}:</b> ${b.date}, ${b.time}`;
+        list.appendChild(li);
+      });
+    } else {
+      list.innerHTML = '<li>No upcoming sessions.</li>';
+    }
+  });
+  </script>
+</body>
+</html> 
