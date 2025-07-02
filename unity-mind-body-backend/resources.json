@@ -1,0 +1,52 @@
+{
+    "welcomeText": "Explore our curated resources to support your mental and physical wellness journey. Learn, practice, and grow with guidance from experts and research-backed articles.",
+    
+    "articles": [
+      {
+        "title": "5 Ways Art Therapy Improves Mental Health",
+        "description": "Discover how expressing yourself through painting, drawing, or creative art can reduce stress, improve mood, and help process emotions effectively."
+      },
+      {
+        "title": "Beginner’s Guide to Meditation",
+        "description": "Learn simple meditation techniques to calm your mind, improve focus, and manage daily anxiety in just 10 minutes a day."
+      },
+      {
+        "title": "The Science of Mind-Body Connection",
+        "description": "Understand how your mental state affects your physical health and how yoga, exercise, and mindfulness create holistic wellbeing."
+      },
+      {
+        "title": "How Group Therapy Builds Confidence",
+        "description": "See how sharing and listening in group therapy creates belongingness, reduces isolation, and improves self-esteem."
+      },
+      {
+        "title": "Tips to Reduce Exam Stress Naturally",
+        "description": "Easy lifestyle changes, breathing techniques, and mindset shifts to manage academic stress without feeling overwhelmed."
+      }
+    ],
+  
+    "infographics": [
+      {
+        "title": "Mind-Body Connection Diagram",
+        "description": "Visual representation showing how stress impacts your immune system, sleep, and digestion, and how mental health care reverses these effects."
+      },
+      {
+        "title": "Daily 5-Minute Meditation Flow",
+        "description": "Step-wise graphic to practise anywhere, anytime for instant calmness."
+      },
+      {
+        "title": "Self-Care Wheel",
+        "description": "Infographic highlighting emotional, physical, social, and spiritual self-care activities to maintain balance."
+      }
+    ],
+  
+    "wellnessTips": [
+      "Drink enough water daily for mental clarity.",
+      "Take short walks between study sessions to refresh your mind.",
+      "Practise deep breathing before sleep to improve rest quality.",
+      "Journal your thoughts to release mental clutter.",
+      "Connect with friends or family when feeling low."
+    ],
+  
+    "closingNote": "Remember, small daily steps create big lifelong changes. Take care of your mind and body – they are your forever home."
+  }
+  

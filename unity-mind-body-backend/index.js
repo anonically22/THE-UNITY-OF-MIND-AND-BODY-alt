@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
+import path from 'path';
 
 import authRoutes from './routes/auth.js';
 import bookingsRoutes from './routes/bookings.js';
@@ -12,6 +13,10 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the frontend directory
+const __dirname = path.resolve();
+app.use('/frontend', express.static(path.join(__dirname, 'frontend')));
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 

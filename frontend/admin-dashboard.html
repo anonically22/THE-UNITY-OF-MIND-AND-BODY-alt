@@ -5,27 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard - Unity of Mind and Body</title>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
-    <div class="logo">🧘‍♂️ Unity of Mind & Body (Admin)</div>
-    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="logo">
+      <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Unity of Mind & Body <span style='font-size:1.1rem;font-weight:400;color:#7BA89C;'>(Admin)</span>
     </div>
-    <ul class="nav-links">
-      <li><a href="admin-dashboard.html" class="active">Dashboard</a></li>
-      <li><a href="#" id="admin-logout-btn">Logout</a></li>
-    </ul>
+    <div style="display:flex;align-items:center;gap:1.2rem;">
+      <div class="profile-menu" style="position:relative;">
+        <img src="assets/user (1).png" alt="Profile" id="profile-icon" style="height:44px;width:44px;border-radius:50%;cursor:pointer;object-fit:cover;">
+        <div id="profile-dropdown" style="display:none;position:absolute;right:0;top:54px;background:#fff;border-radius:1rem;box-shadow:0 4px 24px rgba(34,34,34,0.13);min-width:160px;z-index:1000;">
+          <a href="#" id="logout-option" style="display:block;padding:1rem 1.2rem;color:#b94a48;text-decoration:none;font-size:1.08rem;">Logout</a>
+        </div>
+      </div>
+    </div>
   </nav>
-  <main>
-    <section class="active">
-      <h2>Admin Dashboard</h2>
-      <div class="card">
-        <h3>Manage Resources</h3>
-        <form id="resource-form">
+  <main style="background:#A4CCD9;min-height:80vh;padding:3rem 0;">
+    <section style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:2.5rem;align-items:center;justify-content:center;">
+      <div class="card" style="background:#fff;width:100%;max-width:900px;padding:2.5rem 2rem;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;">
+          <img src="assets/doodles/ReadingDoodle.svg" alt="Admin Doodle" style="height:38px;">
+          <h3 style="font-family:'Forum',serif;font-size:1.2rem;">Manage Resources</h3>
+        </div>
+        <form id="resource-form" style="margin-bottom:1.5rem;">
           <input type="hidden" name="id" />
           <input type="text" name="title" required placeholder="Title" />
           <input type="text" name="description" placeholder="Description" />
@@ -33,40 +39,80 @@
           <button type="submit" class="btn">Add Resource</button>
           <button type="button" id="cancel-edit" style="display:none;">Cancel Edit</button>
         </form>
-        <table id="resources-table" border="1" style="width:100%;background:#fff;border-radius:8px;overflow:hidden;margin-top:1rem;">
-          <thead><tr><th>Title</th><th>Description</th><th>Image</th><th>Actions</th></tr></thead>
-          <tbody></tbody>
-        </table>
+        <div style="max-height:350px;overflow-y:auto;width:100%;">
+          <table id="resources-table" class="admin-table" border="0" style="width:100%;min-width:600px;">
+            <thead><tr><th>Title</th><th>Description</th><th>Image</th><th>Actions</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
-      <div class="card">
-        <h3>All Users</h3>
-        <table id="users-table" border="1" style="width:100%;background:#fff;border-radius:8px;overflow:hidden;">
-          <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th></tr></thead>
-          <tbody></tbody>
-        </table>
+      <div class="card" style="background:#fff;width:100%;max-width:900px;padding:2.5rem 2rem;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;">
+          <img src="assets/doodles/SelfieDoodle.svg" alt="Users Doodle" style="height:38px;">
+          <h3 style="font-family:'Forum',serif;font-size:1.2rem;margin-bottom:1.2rem;">All Users</h3>
+        </div>
+        <div style="max-height:350px;overflow-y:auto;width:100%;">
+          <table id="users-table" class="admin-table" border="0" style="width:100%;min-width:600px;">
+            <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
-      <div class="card">
-        <h3>All Bookings</h3>
-        <table id="bookings-table" border="1" style="width:100%;background:#fff;border-radius:8px;overflow:hidden;">
-          <thead><tr><th>ID</th><th>User ID</th><th>Service</th><th>Date</th><th>Time</th><th>Notes</th></tr></thead>
-          <tbody></tbody>
-        </table>
+      <div class="card" style="background:#fff;width:100%;max-width:900px;padding:2.5rem 2rem;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;">
+          <img src="assets/doodles/PlantDoodle.svg" alt="Bookings Doodle" style="height:38px;">
+          <h3 style="font-family:'Forum',serif;font-size:1.2rem;margin-bottom:1.2rem;">All Bookings</h3>
+        </div>
+        <div style="max-height:350px;overflow-y:auto;width:100%;">
+          <table id="bookings-table" class="admin-table" border="0" style="width:100%;min-width:600px;">
+            <thead><tr><th>ID</th><th>User ID</th><th>Service</th><th>Date</th><th>Time</th><th>Notes</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
-      <div class="card">
-        <h3>All Feedback</h3>
-        <table id="feedback-table" border="1" style="width:100%;background:#fff;border-radius:8px;overflow:hidden;">
-          <thead><tr><th>ID</th><th>User ID</th><th>Message</th><th>Created At</th></tr></thead>
-          <tbody></tbody>
-        </table>
+      <div class="card" style="background:#fff;width:100%;max-width:900px;padding:2.5rem 2rem;box-sizing:border-box;">
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.2rem;">
+          <img src="assets/doodles/MeditatingDoodle.svg" alt="Feedback Doodle" style="height:38px;">
+          <h3 style="font-family:'Forum',serif;font-size:1.2rem;margin-bottom:1.2rem;">All Feedback</h3>
+        </div>
+        <div style="max-height:350px;overflow-y:auto;width:100%;">
+          <table id="feedback-table" class="admin-table" border="0" style="width:100%;min-width:600px;">
+            <thead><tr><th>ID</th><th>User ID</th><th>Message</th><th>Created At</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="footer">
-    <div>Contact: unitymindbody@example.com | 📞 123-456-7890</div>
-    <div class="socials">
-      <span>🌐</span> <span>📘</span> <span>🐦</span> <span>📸</span>
+  <footer class="footer" style="background:#FCFAF6;color:#222;padding:2.5rem 0 1.2rem 0;border-top-left-radius:24px;border-top-right-radius:24px;box-shadow:0 -2px 8px rgba(0,0,0,0.03);width:100%;font-size:1.05rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 1.5rem auto;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.7rem;">
+        <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;">
+        <span style="font-family:'Forum',serif;font-size:1.2rem;font-weight:600;">Unity of Mind & Body</span>
+      </div>
+      <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;align-items:center;font-size:1.05rem;">
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">Get support</a></li>
+        <li><a href="/frontend/services.html" style="color:#222;text-decoration:none;">Services</a></li>
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">Team</a></li>
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">About us</a></li>
+        <li id="feedback-footer-link" style="display:none;"><a href="/frontend/feedback.html" style="color:#222;text-decoration:none;">Feedback</a></li>
+        <li id="admin-footer-link"><a href="/frontend/admin-login.html" style="color:#222;text-decoration:none;">Admin</a></li>
+      </ul>
     </div>
-    <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 1.2rem 0;" />
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;font-size:0.98rem;flex-wrap:wrap;gap:1rem;">
+      <div>&copy; 2024 Unity of Mind & Body. All rights reserved.</div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:#222;text-decoration:none;">Privacy policy</a>
+        <a href="#" style="color:#222;text-decoration:none;">Terms & conditions</a>
+      </div>
+    </div>
+    <script>
+      // Only show admin link on user login/signup pages
+      if (window.location.pathname.includes('user-login') || window.location.pathname.includes('user-signup')) {
+        document.getElementById('admin-footer-link').style.display = '';
+      }
+    </script>
   </footer>
   <script src="js/main.js"></script>
   <script>
@@ -74,14 +120,6 @@
   const token = localStorage.getItem('token');
   const role = localStorage.getItem('role');
   if (!token || role !== 'admin') window.location.href = 'admin-login.html';
-
-  document.getElementById('admin-logout-btn').onclick = (e) => {
-    e.preventDefault();
-    localStorage.removeItem('token');
-    localStorage.removeItem('userName');
-    localStorage.removeItem('role');
-    window.location.href = 'admin-login.html';
-  };
 
   // Fetch all users
   fetch('http://localhost:5000/api/admin/users', {
@@ -143,10 +181,31 @@
         (data.resources || []).forEach(r => {
           const tr = document.createElement('tr');
           tr.innerHTML = `<td>${r.title}</td><td>${r.description || ''}</td><td>${r.image_url ? `<img src='${r.image_url}' style='max-width:60px;'>` : ''}</td><td>
-            <button onclick="editResource('${r.id}','${r.title.replace(/'/g, '\\'')}', '${(r.description||'').replace(/'/g, '\\'')}', '${(r.image_url||'').replace(/'/g, '\\'')}')">Edit</button>
-            <button onclick="deleteResource('${r.id}')">Delete</button>
+            <button class="edit-resource-btn"
+              data-id="${r.id}"
+              data-title="${encodeURIComponent(r.title || '')}"
+              data-description="${encodeURIComponent(r.description || '')}"
+              data-image_url="${encodeURIComponent(r.image_url || '')}">Edit</button>
+            <button class="delete-resource-btn" data-id="${r.id}">Delete</button>
           </td>`;
           resourcesTable.appendChild(tr);
+        });
+        // Add event listeners for edit buttons
+        resourcesTable.querySelectorAll('.edit-resource-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            window.editResource(
+              btn.dataset.id,
+              decodeURIComponent(btn.dataset.title),
+              decodeURIComponent(btn.dataset.description),
+              decodeURIComponent(btn.dataset.image_url)
+            );
+          });
+        });
+        // Add event listeners for delete buttons
+        resourcesTable.querySelectorAll('.delete-resource-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            window.deleteResource(btn.dataset.id);
+          });
         });
       });
   }
@@ -200,6 +259,14 @@
     editingId = null;
   };
   loadResources();
+
+  window.addEventListener('DOMContentLoaded', () => {
+    // Show feedback link only if logged in
+    const feedbackFooterLink = document.getElementById('feedback-footer-link');
+    if (feedbackFooterLink) {
+      feedbackFooterLink.style.display = localStorage.getItem('token') ? '' : 'none';
+    }
+  });
   </script>
 </body>
 </html> 

@@ -5,44 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Unity of Mind and Body - Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
-    <div class="logo">🧘‍♂️ Unity of Mind & Body</div>
-    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="logo">
+      <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Unity of Mind & Body
     </div>
-    <ul class="nav-links">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="resources.html">Resources</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="#" id="logout-btn">Logout</a></li>
-    </ul>
-  </nav>
-  <main>
-    <section class="dashboard-welcome active">
-      <h2>Hi, <span id="dashboard-username"></span>!</h2>
-      <div class="card upcoming-sessions">
-        <h3>Upcoming Sessions</h3>
-        <ul id="upcoming-list"></ul>
+    <div style="display:flex;align-items:center;gap:1.2rem;">
+      <a href="resources.html" class="btn outline" style="font-size:1.05rem;">Resources</a>
+      <a href="contact.html" class="btn outline" style="font-size:1.05rem;">Feedback</a>
+      <div class="profile-menu" style="position:relative;">
+        <img src="assets/user (1).png" alt="Profile" id="profile-icon" style="height:44px;width:44px;border-radius:50%;cursor:pointer;object-fit:cover;">
+        <div id="profile-dropdown" style="display:none;position:absolute;right:0;top:54px;background:#fff;border-radius:1rem;box-shadow:0 4px 24px rgba(34,34,34,0.13);min-width:160px;z-index:1000;">
+          <a href="#" id="settings-option" style="display:block;padding:1rem 1.2rem;color:#222;text-decoration:none;font-size:1.08rem;border-bottom:1px solid #eee;">Settings</a>
+          <a href="#" id="logout-option" style="display:block;padding:1rem 1.2rem;color:#b94a48;text-decoration:none;font-size:1.08rem;">Logout</a>
+        </div>
       </div>
-      <div class="dashboard-links">
+    </div>
+  </nav>
+  <main style="max-width:1100px;margin:3rem auto 2rem auto;padding:0 1.2rem;display:flex;gap:2.5rem;flex-wrap:wrap;align-items:flex-start;">
+    <section class="dashboard-profile card card-peach" style="flex:1 1 320px;min-width:260px;max-width:340px;display:flex;flex-direction:column;align-items:center;gap:1.2rem;position:relative;overflow:hidden;background:#FFE6D1;">
+      <img src="assets/user (1).png" alt="User Avatar" style="height:80px;width:80px;border-radius:50%;object-fit:cover;margin-top:1.2rem;z-index:1;">
+      <h2 style="font-family:'Forum',serif;font-size:1.5rem;text-align:center;z-index:1;">Hi, <span id="dashboard-username"></span>!</h2>
+      <img src="assets/doodles/PlantDoodle.svg" alt="Plant Doodle" style="height:60px;margin-bottom:1.2rem;z-index:1;">
+    </section>
+    <section class="dashboard-main card card-blue" style="flex:2 1 420px;min-width:320px;max-width:700px;display:flex;flex-direction:column;gap:2rem;background:#A4CCD9;">
+      <div class="card upcoming-sessions" style="background:#fff;margin:0 0 1.5rem 0;padding:2.2rem 1.5rem;box-sizing:border-box;width:100%;max-width:100%;">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;">
+          <img src="assets/doodles/ReadingDoodle.svg" alt="Reading Doodle" style="height:38px;">
+          <h3 style="font-family:'Forum',serif;font-size:1.2rem;">Upcoming Sessions</h3>
+        </div>
+        <ul id="upcoming-list" style="padding-left:1.2rem;"></ul>
+      </div>
+      <div class="dashboard-links" style="display:flex;justify-content:center;align-items:center;width:100%;margin-top:0.5rem;">
         <a href="services.html" class="btn">Book New Session</a>
-        <a href="resources.html" class="btn">View Resources</a>
-        <a href="contact.html" class="btn">Submit Feedback</a>
       </div>
     </section>
   </main>
-  <footer class="footer">
-    <div>Contact: unitymindbody@example.com | 📞 123-456-7890</div>
-    <div class="socials">
-      <span>🌐</span> <span>📘</span> <span>🐦</span> <span>📸</span>
+  <footer class="footer" style="background:#FCFAF6;color:#222;padding:2.5rem 0 1.2rem 0;border-top-left-radius:24px;border-top-right-radius:24px;box-shadow:0 -2px 8px rgba(0,0,0,0.03);width:100%;font-size:1.05rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 1.5rem auto;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.7rem;">
+        <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;">
+        <span style="font-family:'Forum',serif;font-size:1.2rem;font-weight:600;">Unity of Mind & Body</span>
+      </div>
+      <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;align-items:center;font-size:1.05rem;">
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">Get support</a></li>
+        <li><a href="/frontend/services.html" style="color:#222;text-decoration:none;">Services</a></li>
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">Team</a></li>
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">About us</a></li>
+        <li id="feedback-footer-link" style="display:none;"><a href="/frontend/feedback.html" style="color:#222;text-decoration:none;">Feedback</a></li>
+        <li id="admin-footer-link"><a href="/frontend/admin-login.html" style="color:#222;text-decoration:none;">Admin</a></li>
+      </ul>
     </div>
-    <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 1.2rem 0;" />
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;font-size:0.98rem;flex-wrap:wrap;gap:1rem;">
+      <div>&copy; 2024 Unity of Mind & Body. All rights reserved.</div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:#222;text-decoration:none;">Privacy policy</a>
+        <a href="#" style="color:#222;text-decoration:none;">Terms & conditions</a>
+      </div>
+    </div>
+    <script>
+      // Only show admin link on user login/signup pages
+      if (window.location.pathname.includes('user-login') || window.location.pathname.includes('user-signup')) {
+        document.getElementById('admin-footer-link').style.display = '';
+      }
+    </script>
   </footer>
   <script src="js/main.js"></script>
   <script>
@@ -75,6 +107,15 @@
       });
     } else {
       list.innerHTML = '<li>No upcoming sessions.</li>';
+    }
+  });
+  </script>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Show feedback link only if logged in
+    const feedbackFooterLink = document.getElementById('feedback-footer-link');
+    if (feedbackFooterLink) {
+      feedbackFooterLink.style.display = localStorage.getItem('token') ? '' : 'none';
     }
   });
   </script>

@@ -5,38 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login - Unity of Mind and Body</title>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body style="background:#EBFFD8;min-height:100vh;display:flex;flex-direction:column;">
   <nav class="navbar">
-    <div class="logo">🧘‍♂️ Unity of Mind & Body (Admin)</div>
+    <div class="logo">
+      <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Unity of Mind & Body <span style='font-size:1.1rem;font-weight:400;color:#7BA89C;'>(Admin)</span>
+    </div>
     <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <ul class="nav-links">
-      <li><a href="admin-login.html" class="active">Admin Login</a></li>
-      <li><a href="admin-signup.html">Admin Sign Up</a></li>
-    </ul>
+    <a href="admin-signup.html" class="cta-btn">Sign Up</a>
   </nav>
-  <main>
-    <section class="auth-container active">
-      <h2>Admin Login</h2>
-      <form id="admin-login-form">
-        <input type="email" name="email" required placeholder="Admin Email" />
-        <input type="password" name="password" required placeholder="Password" />
-        <button type="submit" class="btn">Login</button>
+  <main style="flex:1;display:flex;align-items:center;justify-content:center;min-height:70vh;">
+    <section style="background:#fff;border-radius:22px;box-shadow:0 4px 32px rgba(141,188,199,0.13);padding:2.5rem 2.5rem 2rem 2.5rem;max-width:480px;width:100%;margin:2.5rem 0;display:flex;flex-direction:column;align-items:center;">
+      <img src="assets/doodles/ReadingDoodle.svg" alt="Admin Login Doodle" style="height:70px;margin-bottom:1.2rem;">
+      <h2 style="font-family:'Forum',serif;color:#7BA89C;font-size:2rem;margin-bottom:0.5rem;">Admin Login</h2>
+      <div style="color:#b94a48;font-size:1.08rem;margin-bottom:1.2rem;text-align:center;">This page is for administrators only.</div>
+      <form id="admin-login-form" style="width:100%;display:flex;flex-direction:column;gap:1.1rem;">
+        <input type="email" name="email" required placeholder="Admin Email" style="padding:0.8rem 1rem;border-radius:14px;border:1.5px solid #A4CCD9;background:#F8FCF9;font-size:1rem;outline:none;" />
+        <input type="password" name="password" required placeholder="Password" style="padding:0.8rem 1rem;border-radius:14px;border:1.5px solid #A4CCD9;background:#F8FCF9;font-size:1rem;outline:none;" />
+        <button type="submit" class="btn" style="background:#8DBCC7;color:#fff;border:none;border-radius:14px;padding:0.8rem 0;font-size:1.08rem;font-family:'Poppins',sans-serif;font-weight:600;box-shadow:0 2px 8px rgba(141,188,199,0.13);cursor:pointer;transition:background 0.2s;">Login</button>
       </form>
-      <p style="text-align:center;margin-top:1rem;">No admin account? <a href="admin-signup.html">Sign up</a></p>
+      <p style="text-align:center;margin-top:1rem;font-size:1rem;">No admin account? <a href="admin-signup.html" style="color:#8DBCC7;text-decoration:underline;">Sign up</a></p>
     </section>
   </main>
-  <footer class="footer">
-    <div>Contact: unitymindbody@example.com | 📞 123-456-7890</div>
-    <div class="socials">
-      <span>🌐</span> <span>📘</span> <span>🐦</span> <span>📸</span>
+  <footer class="footer" style="background:#FCFAF6;color:#222;padding:2.5rem 0 1.2rem 0;border-top-left-radius:24px;border-top-right-radius:24px;box-shadow:0 -2px 8px rgba(0,0,0,0.03);width:100%;font-size:1.05rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 1.5rem auto;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.7rem;">
+        <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;">
+        <span style="font-family:'Forum',serif;font-size:1.2rem;font-weight:600;">Unity of Mind & Body</span>
+      </div>
+      <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;align-items:center;font-size:1.05rem;">
+        <li><a href="#" style="color:#222;text-decoration:none;">Get support</a></li>
+        <li><a href="services.html" style="color:#222;text-decoration:none;">Services</a></li>
+        <li><a href="#" style="color:#222;text-decoration:none;">Team</a></li>
+        <li><a href="#" style="color:#222;text-decoration:none;">About us</a></li>
+        <li><a href="contact.html" style="color:#222;text-decoration:none;">Contact us</a></li>
+        <li id="admin-footer-link" style="display:none;"><a href="user-login.html" style="color:#222;text-decoration:none;">Admin</a></li>
+      </ul>
     </div>
-    <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 1.2rem 0;" />
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;font-size:0.98rem;flex-wrap:wrap;gap:1rem;">
+      <div>&copy; 2024 Unity of Mind & Body. All rights reserved.</div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:#222;text-decoration:none;">Privacy policy</a>
+        <a href="#" style="color:#222;text-decoration:none;">Terms & conditions</a>
+      </div>
+    </div>
+    <script>
+      // Only show admin link on user login/signup pages
+      if (window.location.pathname.includes('user-login') || window.location.pathname.includes('user-signup')) {
+        document.getElementById('admin-footer-link').style.display = '';
+      }
+    </script>
   </footer>
   <script src="js/main.js"></script>
   <script>

@@ -5,55 +5,142 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Unity of Mind and Body - Home</title>
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
 </head>
 <body>
   <nav class="navbar">
-    <div class="logo">🧘‍♂️ Unity of Mind & Body</div>
+    <div class="logo">
+      <img src="../assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Unity of Mind & Body
+    </div>
     <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="home.html" class="active">Home</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="resources.html">Resources</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="login.html">Login/Register</a></li>
     </ul>
+    <a href="user-login.html" class="cta-btn">Login</a>
   </nav>
   <main>
-    <section class="hero active">
-      <h1>Your health journey, our shared mission</h1>
-      <p class="subtitle">Holistic wellness for students: mind and body in harmony.</p>
-      <div class="service-highlights">
-        <div class="card">
-          <h3>Art Therapy</h3>
-          <p>Express your emotions through art</p>
-        </div>
-        <div class="card">
-          <h3>Group Therapy</h3>
-          <p>Find support in a safe space</p>
-        </div>
-        <div class="card">
-          <h3>Yoga/Meditation</h3>
-          <p>Relax and rejuvenate your mind and body</p>
-        </div>
+    <section class="hero">
+      <svg class="bg-watermark" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="160" cy="110" rx="160" ry="110" fill="#7BEA5B" />
+      </svg>
+      <h1 class="hero-headline">
+        Your Journey to Better <span class="hero-highlight">Mental Health</span> Starts Here
+      </h1>
+      <div class="hero-subtext">
+        Personalized insights, real-time support, and advanced tools for your mental well-being.
       </div>
       <div class="hero-ctas">
-        <a href="services.html" class="btn">Book a Session</a>
-        <a href="resources.html" class="btn">Explore Resources</a>
+        <!-- Buttons removed as per user request -->
+      </div>
+      <div class="card-grid">
+        <div class="card card-green">
+          <div class="card-title">Art Therapy</div>
+          <div class="card-desc">Unlock your creativity, express your emotions through guided art sessions.<br><span style='color:#444;'>Discover new ways to heal and grow through artistic expression.</span></div>
+          <img src="../assets/doodles/PlantDoodle.svg" alt="Art Therapy Doodle" style="max-height:100px;width:auto;margin:0 auto;display:block;" />
+        </div>
+        <div class="card card-peach">
+          <div class="card-title">Group Therapy</div>
+          <div class="card-desc">Find support in a safe space.<br><span style='color:#444;'>Share, connect, and grow together with others on a similar journey.</span></div>
+          <img src="../assets/doodles/GroovySittingDoodle.svg" alt="Group Therapy Doodle" style="max-height:100px;width:auto;margin:0 auto;display:block;" />
+        </div>
+        <div class="card card-green" style="background:#A4CCD9;">
+          <div class="card-title">Yoga and Meditation</div>
+          <div class="card-desc">Relax and rejuvenate your mind and body.<br><span style='color:#444;'>Experience calm, balance, and inner peace through mindful practice.</span></div>
+          <img src="../assets/doodles/MeditatingDoodle.svg" alt="Yoga and Meditation Doodle" style="max-height:100px;width:auto;margin:0 auto;display:block;" />
+        </div>
+      </div>
+    </section>
+    <section class="project-idea" style="max-width:900px;margin:3rem auto 2rem auto;padding:2.5rem 1.5rem;background:#fff;border-radius:1.5rem;box-shadow:0 4px 24px rgba(34,34,34,0.06);">
+      <h2 style="font-family:'Forum',serif;font-size:2.1rem;margin-bottom:1.5rem;text-align:center;color:#222;">The Unity of Mind and Body</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:center;align-items:stretch;">
+        <div style="flex:1 1 260px;min-width:240px;max-width:300px;text-align:center;background:#A4CCD9;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;">
+          <img src="../assets/doodles/SelfieDoodle.svg" alt="Struggles Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
+          <h3 style="font-family:'Forum',serif;font-size:1.18rem;color:#222;margin-bottom:0.5rem;">What Students Face</h3>
+          <p style="color:#444;font-size:1.05rem;text-align:left;">Students struggle with stress, anxiety, and lack of mental health support, and they often ignore physical health due to busy lifestyles and lack of awareness.</p>
+        </div>
+        <div style="flex:1 1 260px;min-width:240px;max-width:300px;text-align:center;background:#FFE6D1;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;">
+          <img src="../assets/doodles/PlantDoodle.svg" alt="How We Help Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
+          <h3 style="font-family:'Forum',serif;font-size:1.18rem;color:#222;margin-bottom:0.5rem;">How We Help</h3>
+          <p style="color:#444;font-size:1.05rem;text-align:left;">We provide an integrated platform offering Art Therapy, Group Therapy, Yoga, and Meditation sessions along with mental wellness resources and awareness campaigns to build a healthier, happier campus community.</p>
+        </div>
+        <div style="flex:1 1 260px;min-width:240px;max-width:300px;text-align:center;background:#CFFF8D;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;display:flex;flex-direction:column;align-items:center;">
+          <img src="../assets/doodles/MeditatingDoodle.svg" alt="Our Approach Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
+          <h3 style="font-family:'Forum',serif;font-size:1.18rem;color:#222;margin-bottom:0.5rem;">Our Approach</h3>
+          <p style="color:#444;font-size:1.05rem;text-align:left;">Combine mental and physical wellness through an easy-to-use website where students can book therapy and activity sessions, access resources, and engage in awareness programs – making self-care simple, accessible, and stigma-free.</p>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="footer">
-    <div>Contact: unitymindbody@example.com | 📞 123-456-7890</div>
-    <div class="socials">
-      <span>🌐</span> <span>📘</span> <span>🐦</span> <span>📸</span>
+  <footer class="footer" style="background:#FCFAF6;color:#222;padding:2.5rem 0 1.2rem 0;border-top-left-radius:24px;border-top-right-radius:24px;box-shadow:0 -2px 8px rgba(0,0,0,0.03);width:100%;font-size:1.05rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 1.5rem auto;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.7rem;">
+        <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;">
+        <span style="font-family:'Forum',serif;font-size:1.2rem;font-weight:600;">Unity of Mind & Body</span>
+      </div>
+      <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;align-items:center;font-size:1.05rem;">
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">Get support</a></li>
+        <li><a href="/frontend/services.html" style="color:#222;text-decoration:none;">Services</a></li>
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">Team</a></li>
+        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">About us</a></li>
+        <li id="feedback-footer-link" style="display:none;"><a href="/frontend/feedback.html" style="color:#222;text-decoration:none;">Feedback</a></li>
+        <li id="admin-footer-link"><a href="/frontend/admin-login.html" style="color:#222;text-decoration:none;">Admin</a></li>
+      </ul>
     </div>
-    <div>&copy; 2024 The Unity of Mind and Body. All rights reserved.</div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 1.2rem 0;" />
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;font-size:0.98rem;flex-wrap:wrap;gap:1rem;">
+      <div>&copy; 2024 Unity of Mind & Body. All rights reserved.</div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:#222;text-decoration:none;">Privacy policy</a>
+        <a href="#" style="color:#222;text-decoration:none;">Terms & conditions</a>
+      </div>
+    </div>
   </footer>
   <script src="js/main.js"></script>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Show/hide auth/profile links
+    const token = localStorage.getItem('token');
+    document.getElementById('nav-auth').style.display = token ? 'none' : '';
+    document.getElementById('nav-signup').style.display = token ? 'none' : '';
+    document.getElementById('nav-profile').style.display = token ? '' : 'none';
+    // Profile dropdown
+    const profileIcon = document.getElementById('profile-icon');
+    const profileDropdown = document.getElementById('profile-dropdown');
+    if (profileIcon) {
+      profileIcon.onclick = () => {
+        profileDropdown.style.display = profileDropdown.style.display === 'block' ? 'none' : 'block';
+      };
+      document.addEventListener('click', (e) => {
+        if (!profileIcon.contains(e.target) && !profileDropdown.contains(e.target)) {
+          profileDropdown.style.display = 'none';
+        }
+      });
+      document.getElementById('logout-option').onclick = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userName');
+        window.location.href = 'user-login.html';
+      };
+    }
+    // Dynamic doodle/color for home cards
+    for (let i = 0; i < 3; i++) {
+      document.getElementById('home-card-' + i).style.background = window._unityDoodles.getColor(i);
+      document.getElementById('home-doodle-' + i).src = 'assets/doodles/' + window._unityDoodles.getDoodle(i);
+    }
+    // Show feedback link only if logged in
+    const feedbackFooterLink = document.getElementById('feedback-footer-link');
+    if (feedbackFooterLink) {
+      feedbackFooterLink.style.display = localStorage.getItem('token') ? '' : 'none';
+    }
+  });
+  </script>
 </body>
 </html> 
