@@ -1,0 +1,26 @@
+{
+    "getSupport": {
+      "title": "Get Support",
+      "intro": "Need help or have questions? We’re here to support you in your wellness journey.",
+      "howWeSupport": [
+        {
+          "title": "Book a Session",
+          "description": "Explore our Art Therapy, Group Therapy, or Yoga/Meditation sessions to find what suits your needs best."
+        },
+        {
+          "title": "Read Resources",
+          "description": "Access curated articles, tips, and infographics to boost your mental and physical health daily."
+        },
+        {
+          "title": "Contact Our Team",
+          "description": "If you have specific queries, suggestions, or need personalised guidance, fill the form below, and our team will reach out within 24 hours."
+        }
+      ],
+      "contactForm": {
+        "fields": ["Name", "Email", "Select Query Type (Booking Issue / General Question / Suggestion / Feedback)", "Message"],
+        "submitButton": "Get Support"
+      },
+      "emergencyNote": "If you are feeling unsafe or in crisis, please reach out to your nearest trusted person immediately or call a local helpline. Your life and wellbeing are important."
+    }
+  }
+  

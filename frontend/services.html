@@ -31,30 +31,69 @@
     <section style="max-width:900px;margin:3rem auto 2rem auto;padding:2.5rem 1.5rem;background:#fff;border-radius:1.5rem;box-shadow:0 4px 24px rgba(34,34,34,0.06);">
       <h2 style="font-family:'Forum',serif;font-size:2.1rem;margin-bottom:1.5rem;text-align:center;color:#222;">Our Services</h2>
       <div style="display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:center;align-items:stretch;">
-        <div style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#CFFF8D;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;">
+        <div class="service-card" style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#CFFF8D;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;cursor:pointer;transition:transform 0.2s;" onclick="showServiceDetails('Art Therapy')">
           <img src="../assets/doodles/PlantDoodle.svg" alt="Art Therapy Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
           <h3 style="font-family:'Forum',serif;font-size:1.25rem;color:#222;margin-bottom:0.5rem;">Art Therapy</h3>
           <p style="color:#444;font-size:1.05rem;">Explore your emotions through creative expression.</p>
-          <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹1000/session</div>
-          <a href="booking.html?service=Art%20Therapy" class="btn">Book Now</a>
+          <div class="service-actions" style="display:none;">
+            <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹1000/session</div>
+            <a href="booking.html?service=Art%20Therapy" class="btn">Book Now</a>
+          </div>
         </div>
-        <div style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#FFE6D1;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;">
+        <div class="service-card" style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#FFE6D1;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;cursor:pointer;transition:transform 0.2s;" onclick="showServiceDetails('Group Therapy')">
           <img src="../assets/doodles/GroovySittingDoodle.svg" alt="Group Therapy Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
           <h3 style="font-family:'Forum',serif;font-size:1.25rem;color:#222;margin-bottom:0.5rem;">Group Therapy</h3>
           <p style="color:#444;font-size:1.05rem;">Share and connect in a supportive environment.</p>
-          <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹1100/session</div>
-          <a href="booking.html?service=Group%20Therapy" class="btn">Book Now</a>
+          <div class="service-actions" style="display:none;">
+            <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹1100/session</div>
+            <a href="booking.html?service=Group%20Therapy" class="btn">Book Now</a>
+          </div>
         </div>
-        <div style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#A4CCD9;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;">
+        <div class="service-card" style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#A4CCD9;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;cursor:pointer;transition:transform 0.2s;" onclick="showServiceDetails('Yoga & Meditation')">
           <img src="../assets/doodles/MeditatingDoodle.svg" alt="Yoga and Meditation Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
           <h3 style="font-family:'Forum',serif;font-size:1.25rem;color:#222;margin-bottom:0.5rem;">Yoga/Meditation</h3>
           <p style="color:#444;font-size:1.05rem;">Calm your mind and strengthen your body.</p>
-          <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹750/session</div>
-          <a href="booking.html?service=Yoga%2FMeditation" class="btn">Book Now</a>
+          <div class="service-actions" style="display:none;">
+            <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹750/session</div>
+            <a href="booking.html?service=Yoga%2FMeditation" class="btn">Book Now</a>
+          </div>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Service Details Modal -->
+  <div id="service-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;backdrop-filter:blur(4px);">
+    <div id="modal-content" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:1.5rem;padding:2.5rem;max-width:600px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.15);">
+      <button id="close-modal" onclick="closeModal()" style="position:absolute;top:1rem;right:1.5rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#666;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background 0.2s;" onmouseover="this.style.background='#f0f0f0'" onmouseout="this.style.background='none'">×</button>
+      
+      <div id="modal-header" style="text-align:center;margin-bottom:2rem;">
+        <img id="modal-doodle" src="" alt="Service Doodle" style="height:80px;margin-bottom:1rem;" />
+        <h2 id="modal-title" style="font-family:'Forum',serif;font-size:2rem;color:#222;margin-bottom:0.5rem;"></h2>
+        <p id="modal-short-desc" style="color:#666;font-size:1.1rem;"></p>
+      </div>
+      
+      <div id="modal-body">
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-family:'Forum',serif;font-size:1.3rem;color:#222;margin-bottom:1rem;">About This Service</h3>
+          <p id="modal-detailed-desc" style="color:#444;line-height:1.6;font-size:1.05rem;"></p>
+        </div>
+        
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-family:'Forum',serif;font-size:1.3rem;color:#222;margin-bottom:1rem;">How It Works</h3>
+          <p id="modal-how-it-works" style="color:#444;line-height:1.6;font-size:1.05rem;"></p>
+        </div>
+        
+        <div style="margin-bottom:2rem;">
+          <h3 style="font-family:'Forum',serif;font-size:1.3rem;color:#222;margin-bottom:1rem;">Benefits</h3>
+          <ul id="modal-benefits" style="color:#444;line-height:1.6;font-size:1.05rem;padding-left:1.5rem;"></ul>
+        </div>
+        
+              <!-- Removed pricing and booking button section -->
+    </div>
+      </div>
+    </div>
+  </div>
   <footer class="footer" style="background:#FCFAF6;color:#222;padding:2.5rem 0 1.2rem 0;border-top-left-radius:24px;border-top-right-radius:24px;box-shadow:0 -2px 8px rgba(0,0,0,0.03);width:100%;font-size:1.05rem;">
     <div style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 1.5rem auto;flex-wrap:wrap;gap:1.5rem;">
       <div style="display:flex;align-items:center;gap:0.7rem;">
@@ -62,12 +101,12 @@
         <span style="font-family:'Forum',serif;font-size:1.2rem;font-weight:600;">Unity of Mind & Body</span>
       </div>
       <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;align-items:center;font-size:1.05rem;">
-        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">Get support</a></li>
-        <li><a href="/frontend/services.html" style="color:#222;text-decoration:none;">Services</a></li>
-        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">Team</a></li>
-        <li><a href="/frontend/#" style="color:#222;text-decoration:none;">About us</a></li>
-        <li id="feedback-footer-link" style="display:none;"><a href="/frontend/feedback.html" style="color:#222;text-decoration:none;">Feedback</a></li>
-        <li id="admin-footer-link"><a href="/frontend/admin-login.html" style="color:#222;text-decoration:none;">Admin</a></li>
+        <li><a href="get-support.html" style="color:#222;text-decoration:none;">Get support</a></li>
+        <li><a href="services.html" style="color:#222;text-decoration:none;">Services</a></li>
+        <li><a href="team.html" style="color:#222;text-decoration:none;">Team</a></li>
+        <li><a href="about-us.html" style="color:#222;text-decoration:none;">About us</a></li>
+        <li id="feedback-footer-link" style="display:none;"><a href="feedback.html" style="color:#222;text-decoration:none;">Feedback</a></li>
+        <li id="admin-footer-link"><a href="admin-login.html" style="color:#222;text-decoration:none;">Admin</a></li>
       </ul>
     </div>
     <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 1.2rem 0;" />
@@ -87,12 +126,23 @@
   </footer>
   <script src="js/main.js"></script>
   <script>
-  window.addEventListener('DOMContentLoaded', () => {
+  let servicesData = {};
+
+  // Fetch services data on page load
+  window.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const response = await fetch('../unity-mind-body-backend/services.json');
+      servicesData = await response.json();
+    } catch (error) {
+      console.error('Error loading services data:', error);
+    }
+
     // Show/hide auth/profile links
     const token = localStorage.getItem('token');
     document.getElementById('nav-auth').style.display = token ? 'none' : '';
     document.getElementById('nav-signup').style.display = token ? 'none' : '';
     document.getElementById('nav-profile').style.display = token ? '' : 'none';
+    
     // Profile dropdown
     const profileIcon = document.getElementById('profile-icon');
     const profileDropdown = document.getElementById('profile-dropdown');
@@ -111,16 +161,91 @@
         window.location.href = 'user-login.html';
       };
     }
-    for (let i = 0; i < 3; i++) {
-      document.getElementById('service-card-' + i).style.background = window._unityDoodles.getColor(i);
-      document.getElementById('service-doodle-' + i).src = 'assets/doodles/' + window._unityDoodles.getDoodle(i);
-    }
+
     // Show feedback link only if logged in
     const feedbackFooterLink = document.getElementById('feedback-footer-link');
     if (feedbackFooterLink) {
       feedbackFooterLink.style.display = localStorage.getItem('token') ? '' : 'none';
     }
+    
+    // Show service actions only if logged in
+    document.querySelectorAll('.service-actions').forEach(el => {
+      el.style.display = token ? '' : 'none';
+    });
+
+    // Add hover effects to service cards
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-4px)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+      });
+    });
+
+    // Modal close functionality
+    const closeModalBtn = document.getElementById('close-modal');
+    const serviceModal = document.getElementById('service-modal');
+    
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', closeModal);
+    }
+    
+    if (serviceModal) {
+      serviceModal.addEventListener('click', (e) => {
+        if (e.target.id === 'service-modal') {
+          closeModal();
+        }
+      });
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
   });
+
+  function showServiceDetails(serviceName) {
+    const service = servicesData.services?.find(s => s.name === serviceName);
+    if (!service) {
+      console.error('Service not found:', serviceName);
+      return;
+    }
+
+    // Set modal content
+    document.getElementById('modal-title').textContent = service.name;
+    document.getElementById('modal-short-desc').textContent = service.shortDescription;
+    document.getElementById('modal-detailed-desc').textContent = service.detailedDescription;
+    document.getElementById('modal-how-it-works').textContent = service.howItWorks;
+
+    // Set doodle image based on service
+    const doodleMap = {
+      'Art Therapy': 'PlantDoodle.svg',
+      'Group Therapy': 'GroovySittingDoodle.svg',
+      'Yoga & Meditation': 'MeditatingDoodle.svg'
+    };
+    document.getElementById('modal-doodle').src = `../assets/doodles/${doodleMap[serviceName]}`;
+
+    // Set benefits list
+    const benefitsList = document.getElementById('modal-benefits');
+    benefitsList.innerHTML = '';
+    service.benefits.forEach(benefit => {
+      const li = document.createElement('li');
+      li.textContent = benefit;
+      benefitsList.appendChild(li);
+    });
+
+    // Show modal
+    document.getElementById('service-modal').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  function closeModal() {
+    document.getElementById('service-modal').style.display = 'none';
+    document.body.style.overflow = ''; // Restore scrolling
+  }
   </script>
 </body>
 </html> 

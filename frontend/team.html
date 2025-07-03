@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unity of Mind and Body - Our Team</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Unity of Mind & Body
+    </div>
+    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <a href="user-login.html" class="cta-btn">Login</a>
+  </nav>
+
+  <main>
+    <section style="max-width:1100px;margin:3rem auto 2rem auto;padding:2.5rem 1.5rem;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <h1 style="font-family:'Forum',serif;font-size:2.5rem;color:#222;margin-bottom:1rem;">Meet Our Team</h1>
+        <p style="color:#666;font-size:1.2rem;max-width:600px;margin:0 auto;">Passionate students working together to create a healthier campus community through mental and physical wellness.</p>
+      </div>
+      
+      <div id="team-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:2rem;">
+        <!-- Team members will be populated here -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" style="background:#FCFAF6;color:#222;padding:2.5rem 0 1.2rem 0;border-top-left-radius:24px;border-top-right-radius:24px;box-shadow:0 -2px 8px rgba(0,0,0,0.03);width:100%;font-size:1.05rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 1.5rem auto;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.7rem;">
+        <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;">
+        <span style="font-family:'Forum',serif;font-size:1.2rem;font-weight:600;">Unity of Mind & Body</span>
+      </div>
+      <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;align-items:center;font-size:1.05rem;">
+        <li><a href="get-support.html" style="color:#222;text-decoration:none;">Get support</a></li>
+        <li><a href="services.html" style="color:#222;text-decoration:none;">Services</a></li>
+        <li><a href="team.html" style="color:#222;text-decoration:none;">Team</a></li>
+        <li><a href="about-us.html" style="color:#222;text-decoration:none;">About us</a></li>
+        <li id="feedback-footer-link" style="display:none;"><a href="feedback.html" style="color:#222;text-decoration:none;">Feedback</a></li>
+        <li id="admin-footer-link"><a href="admin-login.html" style="color:#222;text-decoration:none;">Admin</a></li>
+      </ul>
+    </div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 1.2rem 0;" />
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;font-size:0.98rem;flex-wrap:wrap;gap:1rem;">
+      <div>&copy; 2024 Unity of Mind & Body. All rights reserved.</div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:#222;text-decoration:none;">Privacy policy</a>
+        <a href="#" style="color:#222;text-decoration:none;">Terms & conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Doodle images for team members
+    const teamDoodles = [
+      'PlantDoodle.svg',
+      'GroovySittingDoodle.svg', 
+      'MeditatingDoodle.svg',
+      'ReadingDoodle.svg',
+      'SittingDoodle.svg'
+    ];
+
+    // Card colors
+    const cardColors = ['#CFFF8D', '#FFE6D1', '#A4CCD9', '#E6D1FF', '#D1F2FF'];
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('../unity-mind-body-backend/team.json');
+        const data = await response.json();
+        
+        const teamGrid = document.getElementById('team-grid');
+        teamGrid.innerHTML = '';
+        
+        data.team.forEach((member, index) => {
+          const card = document.createElement('div');
+          card.style.cssText = `
+            background:${cardColors[index % cardColors.length]};
+            border-radius:1.5rem;
+            padding:2rem;
+            box-shadow:0 4px 24px rgba(34,34,34,0.08);
+            text-align:center;
+            transition:transform 0.2s;
+          `;
+          
+          card.innerHTML = `
+            <img src="assets/doodles/${teamDoodles[index % teamDoodles.length]}" alt="Team Member Doodle" style="height:80px;margin-bottom:1.5rem;" />
+            <h3 style="font-family:'Forum',serif;font-size:1.5rem;color:#222;margin-bottom:0.5rem;">${member.name}</h3>
+            <p style="color:#666;font-size:1.1rem;margin-bottom:1.5rem;font-weight:600;">${member.role}</p>
+            <p style="color:#444;line-height:1.6;margin-bottom:1.5rem;">${member.about}</p>
+            
+            <div style="margin-bottom:1.5rem;">
+              <h4 style="font-family:'Forum',serif;font-size:1.1rem;color:#222;margin-bottom:0.8rem;">Strengths</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;">
+                ${member.strengths.map(strength => `<span style="background:#fff;color:#222;padding:0.4rem 0.8rem;border-radius:1rem;font-size:0.9rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);">${strength}</span>`).join('')}
+              </div>
+            </div>
+            
+            <div>
+              <h4 style="font-family:'Forum',serif;font-size:1.1rem;color:#222;margin-bottom:0.8rem;">Growth Areas</h4>
+              <div style="display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;">
+                ${member.weaknesses.map(weakness => `<span style="background:#fff;color:#666;padding:0.4rem 0.8rem;border-radius:1rem;font-size:0.9rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);">${weakness}</span>`).join('')}
+              </div>
+            </div>
+          `;
+          
+          // Add hover effect
+          card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-4px)';
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+          });
+          
+          teamGrid.appendChild(card);
+        });
+        
+      } catch (error) {
+        console.error('Error loading team data:', error);
+        document.getElementById('team-grid').innerHTML = '<p style="text-align:center;color:#666;font-size:1.1rem;">Unable to load team information. Please try again later.</p>';
+      }
+    });
+  </script>
+</body>
+</html> 

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unity of Mind and Body - Book a Session</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Unity of Mind & Body
+    </div>
+    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <div class="profile-menu" style="position:relative;">
+      <img src="assets/user (1).png" alt="Profile" id="profile-icon" style="height:44px;width:44px;border-radius:50%;cursor:pointer;object-fit:cover;">
+      <div id="profile-dropdown" style="display:none;position:absolute;right:0;top:54px;background:#fff;border-radius:1rem;box-shadow:0 4px 24px rgba(34,34,34,0.13);min-width:160px;z-index:1000;">
+        <a href="#" id="logout-option" style="display:block;padding:1rem 1.2rem;color:#b94a48;text-decoration:none;font-size:1.08rem;">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Services Section -->
+    <section id="services-section" style="max-width:900px;margin:3rem auto 2rem auto;padding:2.5rem 1.5rem;background:#fff;border-radius:1.5rem;box-shadow:0 4px 24px rgba(34,34,34,0.06);">
+      <h2 style="font-family:'Forum',serif;font-size:2.1rem;margin-bottom:1.5rem;text-align:center;color:#222;">Choose Your Service</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:2.5rem;justify-content:center;align-items:stretch;">
+        <div style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#CFFF8D;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;">
+          <img src="assets/doodles/PlantDoodle.svg" alt="Art Therapy Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
+          <h3 style="font-family:'Forum',serif;font-size:1.25rem;color:#222;margin-bottom:0.5rem;">Art Therapy</h3>
+          <p style="color:#444;font-size:1.05rem;">Explore your emotions through creative expression.</p>
+          <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹1000/session</div>
+          <button class="btn" onclick="selectService('Art Therapy')">Book Now</button>
+        </div>
+        <div style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#FFE6D1;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;">
+          <img src="assets/doodles/GroovySittingDoodle.svg" alt="Group Therapy Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
+          <h3 style="font-family:'Forum',serif;font-size:1.25rem;color:#222;margin-bottom:0.5rem;">Group Therapy</h3>
+          <p style="color:#444;font-size:1.05rem;">Share and connect in a supportive environment.</p>
+          <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹1100/session</div>
+          <button class="btn" onclick="selectService('Group Therapy')">Book Now</button>
+        </div>
+        <div style="flex:1 1 220px;min-width:220px;max-width:260px;text-align:center;background:#A4CCD9;border-radius:1.2rem;box-shadow:0 2px 12px rgba(140,188,199,0.08);padding:1.5rem 1rem;">
+          <img src="assets/doodles/MeditatingDoodle.svg" alt="Yoga and Meditation Doodle" style="max-height:70px;width:auto;margin-bottom:0.7rem;" />
+          <h3 style="font-family:'Forum',serif;font-size:1.25rem;color:#222;margin-bottom:0.5rem;">Yoga/Meditation</h3>
+          <p style="color:#444;font-size:1.05rem;">Calm your mind and strengthen your body.</p>
+          <div class="service-price" style="color:#222;font-weight:600;margin:0.7rem 0 1rem 0;">₹750/session</div>
+          <button class="btn" onclick="selectService('Yoga/Meditation')">Book Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section id="booking-section" style="display:none;max-width:500px;margin:3rem auto 2rem auto;padding:2.5rem 1.5rem;background:#fff;border-radius:1.5rem;box-shadow:0 4px 24px rgba(34,34,34,0.06);">
+      <div style="text-align:center;margin-bottom:2rem;">
+        <img src="assets/doodles/GroovySittingDoodle.svg" alt="Booking Doodle" style="height:70px;margin-bottom:1rem;">
+        <h2 style="font-family:'Forum',serif;font-size:2rem;color:#222;">Book Your Session</h2>
+        <p style="color:#666;font-size:1.1rem;margin-top:0.5rem;">Selected Service: <span id="selected-service" style="font-weight:600;color:#222;"></span></p>
+      </div>
+      
+      <form id="booking-form" style="display:flex;flex-direction:column;gap:1.2rem;">
+        <input type="text" name="name" required placeholder="Name" style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;" />
+        <input type="email" name="email" required placeholder="Email" style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;" />
+        <input type="hidden" name="service" id="form-service" />
+        <input type="date" name="date" required style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;" />
+        <input type="time" name="time" required style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;" />
+        <textarea name="notes" placeholder="Additional notes (optional)" style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;min-height:100px;resize:vertical;"></textarea>
+        <div style="display:flex;gap:1rem;margin-top:1rem;">
+          <button type="button" class="btn outline" onclick="backToServices()" style="flex:1;">Back to Services</button>
+          <button type="submit" class="btn" style="flex:1;">Book Session</button>
+        </div>
+      </form>
+      
+      <div id="booking-confirmation" style="display:none;text-align:center;padding:2rem;">
+        <h3 style="color:#222;font-size:1.5rem;margin-bottom:1rem;">Booking Confirmed!</h3>
+        <p id="confirmation-message" style="color:#666;font-size:1.1rem;"></p>
+        <button class="btn" onclick="window.location.href='dashboard.html'" style="margin-top:1.5rem;">Go to Dashboard</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" style="background:#FCFAF6;color:#222;padding:2.5rem 0 1.2rem 0;border-top-left-radius:24px;border-top-right-radius:24px;box-shadow:0 -2px 8px rgba(0,0,0,0.03);width:100%;font-size:1.05rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 1.5rem auto;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.7rem;">
+        <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;">
+        <span style="font-family:'Forum',serif;font-size:1.2rem;font-weight:600;">Unity of Mind & Body</span>
+      </div>
+      <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;align-items:center;font-size:1.05rem;">
+        <li><a href="#" style="color:#222;text-decoration:none;">Get support</a></li>
+        <li><a href="services.html" style="color:#222;text-decoration:none;">Services</a></li>
+        <li><a href="#" style="color:#222;text-decoration:none;">Team</a></li>
+        <li><a href="#" style="color:#222;text-decoration:none;">About us</a></li>
+        <li><a href="contact.html" style="color:#222;text-decoration:none;">Contact us</a></li>
+      </ul>
+    </div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 1.2rem 0;" />
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;font-size:0.98rem;flex-wrap:wrap;gap:1rem;">
+      <div>&copy; 2024 Unity of Mind & Body. All rights reserved.</div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:#222;text-decoration:none;">Privacy policy</a>
+        <a href="#" style="color:#222;text-decoration:none;">Terms & conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Check if user is logged in
+    if (!localStorage.getItem('token')) {
+      window.location.href = 'user-login.html';
+    }
+
+    let selectedService = '';
+
+    function selectService(service) {
+      selectedService = service;
+      document.getElementById('selected-service').textContent = service;
+      document.getElementById('form-service').value = service;
+      
+      // Show booking form, hide services
+      document.getElementById('services-section').style.display = 'none';
+      document.getElementById('booking-section').style.display = 'block';
+      
+      // Auto-fill name if available
+      if (localStorage.getItem('userName')) {
+        document.querySelector('input[name="name"]').value = localStorage.getItem('userName');
+      }
+    }
+
+    function backToServices() {
+      document.getElementById('services-section').style.display = 'block';
+      document.getElementById('booking-section').style.display = 'none';
+      document.getElementById('booking-form').style.display = 'flex';
+      document.getElementById('booking-confirmation').style.display = 'none';
+    }
+
+    // Handle booking form submission
+    document.getElementById('booking-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(e.target);
+      const bookingData = {
+        service: formData.get('service'),
+        date: formData.get('date'),
+        time: formData.get('time'),
+        notes: formData.get('notes')
+      };
+
+      try {
+        const token = localStorage.getItem('token');
+        const response = await fetch('http://localhost:5000/api/bookings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(bookingData)
+        });
+
+        const data = await response.json();
+        
+        if (response.ok) {
+          // Show confirmation
+          document.getElementById('booking-form').style.display = 'none';
+          document.getElementById('booking-confirmation').style.display = 'block';
+          document.getElementById('confirmation-message').textContent = 
+            `Thank you for booking ${bookingData.service} on ${bookingData.date} at ${bookingData.time}.`;
+        } else {
+          alert(data.error || 'Booking failed. Please try again.');
+        }
+      } catch (error) {
+        alert('Network error. Please check your connection and try again.');
+      }
+    });
+  </script>
+</body>
+</html> 

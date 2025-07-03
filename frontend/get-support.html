@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unity of Mind and Body - Get Support</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Forum&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;margin-right:8px;">
+      Unity of Mind & Body
+    </div>
+    <div class="hamburger" id="hamburger-menu" tabindex="0" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <a href="user-login.html" class="cta-btn">Login</a>
+  </nav>
+
+  <main>
+    <section style="max-width:900px;margin:3rem auto 2rem auto;padding:2.5rem 1.5rem;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <img src="assets/doodles/GroovySittingDoodle.svg" alt="Get Support Doodle" style="height:100px;margin-bottom:1.5rem;" />
+        <h1 id="page-title" style="font-family:'Forum',serif;font-size:2.5rem;color:#222;margin-bottom:1rem;">Get Support</h1>
+        <p id="page-intro" style="color:#666;font-size:1.2rem;max-width:600px;margin:0 auto;">Need help or have questions? We're here to support you in your wellness journey.</p>
+      </div>
+      
+      <div id="support-content" style="display:grid;gap:2.5rem;">
+        <!-- Content will be populated here -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" style="background:#FCFAF6;color:#222;padding:2.5rem 0 1.2rem 0;border-top-left-radius:24px;border-top-right-radius:24px;box-shadow:0 -2px 8px rgba(0,0,0,0.03);width:100%;font-size:1.05rem;">
+    <div style="display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 1.5rem auto;flex-wrap:wrap;gap:1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.7rem;">
+        <img src="assets/lotus-flower.png" alt="Logo" style="height:36px;vertical-align:middle;">
+        <span style="font-family:'Forum',serif;font-size:1.2rem;font-weight:600;">Unity of Mind & Body</span>
+      </div>
+      <ul style="display:flex;gap:2.2rem;list-style:none;margin:0;padding:0;align-items:center;font-size:1.05rem;">
+        <li><a href="get-support.html" style="color:#222;text-decoration:none;">Get support</a></li>
+        <li><a href="services.html" style="color:#222;text-decoration:none;">Services</a></li>
+        <li><a href="team.html" style="color:#222;text-decoration:none;">Team</a></li>
+        <li><a href="about-us.html" style="color:#222;text-decoration:none;">About us</a></li>
+        <li id="feedback-footer-link" style="display:none;"><a href="feedback.html" style="color:#222;text-decoration:none;">Feedback</a></li>
+        <li id="admin-footer-link"><a href="admin-login.html" style="color:#222;text-decoration:none;">Admin</a></li>
+      </ul>
+    </div>
+    <hr style="border:none;border-top:1px solid #e0e0e0;margin:0 0 1.2rem 0;" />
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;font-size:0.98rem;flex-wrap:wrap;gap:1rem;">
+      <div>&copy; 2024 Unity of Mind & Body. All rights reserved.</div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="#" style="color:#222;text-decoration:none;">Privacy policy</a>
+        <a href="#" style="color:#222;text-decoration:none;">Terms & conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Card colors for different sections
+    const cardColors = ['#CFFF8D', '#FFE6D1', '#A4CCD9'];
+    const doodles = ['PlantDoodle.svg', 'ReadingDoodle.svg', 'SittingDoodle.svg'];
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('../unity-mind-body-backend/get_support.json');
+        const data = await response.json();
+        
+        const supportContent = document.getElementById('support-content');
+        supportContent.innerHTML = '';
+        
+        // How We Support section
+        const supportMethodsCard = document.createElement('div');
+        supportMethodsCard.style.cssText = `
+          background:#fff;
+          border-radius:1.5rem;
+          padding:2.5rem;
+          box-shadow:0 4px 24px rgba(34,34,34,0.08);
+        `;
+        
+        supportMethodsCard.innerHTML = `
+          <h2 style="font-family:'Forum',serif;font-size:1.8rem;color:#222;margin-bottom:2rem;text-align:center;">How We Support You</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:2rem;">
+            ${data.getSupport.howWeSupport.map((method, index) => `
+              <div style="background:${cardColors[index % cardColors.length]};border-radius:1.2rem;padding:1.5rem;text-align:center;">
+                <img src="assets/doodles/${doodles[index % doodles.length]}" alt="Support Method Doodle" style="height:60px;margin-bottom:1rem;" />
+                <h3 style="font-family:'Forum',serif;font-size:1.3rem;color:#222;margin-bottom:0.8rem;">${method.title}</h3>
+                <p style="color:#444;line-height:1.6;">${method.description}</p>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        supportContent.appendChild(supportMethodsCard);
+        
+        // Contact Form section
+        const contactFormCard = document.createElement('div');
+        contactFormCard.style.cssText = `
+          background:#fff;
+          border-radius:1.5rem;
+          padding:2.5rem;
+          box-shadow:0 4px 24px rgba(34,34,34,0.08);
+        `;
+        
+        contactFormCard.innerHTML = `
+          <h2 style="font-family:'Forum',serif;font-size:1.8rem;color:#222;margin-bottom:2rem;text-align:center;">Contact Our Team</h2>
+          <form id="support-form" style="max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem;">
+            <input type="text" name="name" placeholder="Name" required style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;" />
+            <input type="email" name="email" placeholder="Email" required style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;" />
+            <select name="queryType" required style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;">
+              <option value="">Select Query Type</option>
+              <option value="Booking Issue">Booking Issue</option>
+              <option value="General Question">General Question</option>
+              <option value="Suggestion">Suggestion</option>
+              <option value="Feedback">Feedback</option>
+            </select>
+            <textarea name="message" placeholder="Message" required style="padding:1rem;border:2px solid #e0e0e0;border-radius:0.8rem;font-size:1rem;min-height:120px;resize:vertical;"></textarea>
+            <button type="submit" class="btn" style="margin-top:1rem;">${data.getSupport.contactForm.submitButton}</button>
+          </form>
+        `;
+        supportContent.appendChild(contactFormCard);
+        
+        // Emergency Note section
+        const emergencyCard = document.createElement('div');
+        emergencyCard.style.cssText = `
+          background:#FFE6E6;
+          border-radius:1.5rem;
+          padding:2rem;
+          box-shadow:0 4px 24px rgba(34,34,34,0.08);
+          text-align:center;
+          border-left:4px solid #ff6b6b;
+        `;
+        
+        emergencyCard.innerHTML = `
+          <h3 style="font-family:'Forum',serif;font-size:1.3rem;color:#222;margin-bottom:1rem;">⚠️ Emergency Support</h3>
+          <p style="color:#444;line-height:1.6;font-size:1.05rem;">${data.getSupport.emergencyNote}</p>
+        `;
+        supportContent.appendChild(emergencyCard);
+        
+        // Handle form submission
+        document.getElementById('support-form').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const formData = new FormData(e.target);
+          const supportData = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            queryType: formData.get('queryType'),
+            message: formData.get('message')
+          };
+          
+          // For now, just show a success message
+          alert('Thank you for reaching out! Our team will get back to you within 24 hours.');
+          e.target.reset();
+        });
+        
+      } catch (error) {
+        console.error('Error loading support data:', error);
+        document.getElementById('support-content').innerHTML = '<p style="text-align:center;color:#666;font-size:1.1rem;">Unable to load support information. Please try again later.</p>';
+      }
+    });
+  </script>
+</body>
+</html> 
