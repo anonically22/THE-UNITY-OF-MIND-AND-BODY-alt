@@ -1,0 +1,40 @@
+// Copy of unity-mind-body-backend/team.json for static deployment 
+{
+    "team": [
+      {
+        "name": "Rajeev Singh",
+        "role": "Research & Outreach Lead",
+        "about": "Mechanical engineering student passionate about creating practical solutions for mental and physical wellness on campus.",
+        "strengths": ["Creativity", "Business-minded thinking", "Strategic planning"],
+        "weaknesses": ["Overthinks decisions"]
+      },
+      {
+        "name": "Ankita Chanda",
+        "role": "Research & Data Analyst",
+        "about": "BBA(H) student focused on data collection, user research, and ensuring solutions meet student needs effectively.",
+        "strengths": ["Creativity", "Teamwork", "Analysis"],
+        "weaknesses": ["Public speaking nervousness"]
+      },
+      {
+        "name": "Soumen Koley",
+        "role": "Content & Data Collection",
+        "about": "CSE-AI student with a passion for writing, creative solutions, and building impactful student projects.",
+        "strengths": ["Creativity", "Writing skills"],
+        "weaknesses": ["Lack of patience at times"]
+      },
+      {
+        "name": "Suhani Kataria",
+        "role": "Content Writer & Legal Advisor",
+        "about": "BA-LLB(H) student skilled in analytical writing and ensuring legal feasibility of programs and campaigns.",
+        "strengths": ["Analytic thinking", "Writing clarity"],
+        "weaknesses": ["Public speaking nervousness"]
+      },
+      {
+        "name": "Debalina Paul",
+        "role": "Research & Outreach",
+        "about": "CSE student working on data collection, outreach initiatives, and tech integration for scalable impact.",
+        "strengths": ["Research", "Tech integration"],
+        "weaknesses": ["Tends to multitask too much"]
+      }
+    ]
+  } 

@@ -75,7 +75,7 @@
 
     window.addEventListener('DOMContentLoaded', async () => {
       try {
-        const response = await fetch('../unity-mind-body-backend/get_support.json');
+        const response = await fetch('data/get_support.json');
         const data = await response.json();
         
         const supportContent = document.getElementById('support-content');

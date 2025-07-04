@@ -74,7 +74,7 @@
 
     window.addEventListener('DOMContentLoaded', async () => {
       try {
-        const response = await fetch('../unity-mind-body-backend/about_us.json');
+        const response = await fetch('data/about_us.json');
         const data = await response.json();
         
         const aboutContent = document.getElementById('about-content');

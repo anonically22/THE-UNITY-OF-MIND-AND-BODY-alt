@@ -1,0 +1,10 @@
+// Copy of unity-mind-body-backend/about_us.json for static deployment 
+{
+    "aboutUs": {
+      "title": "About Us",
+      "vision": "To create a world where mental and physical wellness are equally prioritised, starting with campus communities and expanding to every corner where support is needed.",
+      "mission": "Provide therapy and wellness sessions that are practical and impactful, raise awareness about mental health challenges and solutions, and build an inclusive community where everyone feels seen, heard, and supported.",
+      "whyWeStarted": "We noticed students often struggle silently with stress, anxiety, and physical health issues due to academic pressure and societal stigma. Our initiative bridges this gap by offering practical, affordable solutions that empower them to lead happier and healthier lives.",
+      "closingNote": "At The Unity of Mind and Body, we believe true wellness is a balance of mental and physical health. Our mission is to integrate therapy, physical activities, and awareness programs into daily student life, making self-care simple, accessible, and stigma-free."
+    }
+  } 

@@ -1,0 +1,47 @@
+// Copy of unity-mind-body-backend/services.json for static deployment 
+{
+    "services": [
+      {
+        "name": "Art Therapy",
+        "shortDescription": "Express and heal through guided creative activities. No artistic skills required.",
+        "detailedDescription": "Art therapy uses creative expression such as painting, drawing, or crafting as a tool to explore emotions, reduce stress, and improve self-awareness. It helps express feelings that are hard to put into words, reduces anxiety and depressive symptoms, enhances self-esteem and confidence, provides emotional release and healing, and improves focus and mindfulness through creative flow.",
+        "howItWorks": "Students attend guided sessions with an art therapist where they engage in themed art activities like 'draw your safe place' or 'colour your emotions'. No artistic skills required – focus is on expression, not perfection.",
+        "benefits": [
+          "Helps express feelings that are hard to put into words",
+          "Reduces anxiety and depressive symptoms",
+          "Enhances self-esteem and confidence",
+          "Provides emotional release and healing",
+          "Improves focus and mindfulness through creative flow"
+        ],
+        "price": "₹1000/session"
+      },
+      {
+        "name": "Group Therapy",
+        "shortDescription": "Share experiences in a safe group space, learn and grow together.",
+        "detailedDescription": "Group therapy is a form of counselling where 5-10 students meet together with a therapist to share their experiences, challenges, and learn coping strategies collectively. It helps individuals realise they are not alone, build social support and empathy, learn different perspectives and solutions, improve communication and listening skills, and boost self-confidence by sharing stories.",
+        "howItWorks": "Students join small groups led by a psychologist. Sessions are safe, confidential, and structured around themes like stress management, self-confidence building, or handling academic pressure. Activities include open sharing, guided discussions, and role-playing exercises.",
+        "benefits": [
+          "Realise they are not alone in struggles",
+          "Build social support and empathy",
+          "Learn different perspectives and solutions",
+          "Improve communication and listening skills",
+          "Boost self-confidence by sharing stories"
+        ],
+        "price": "₹1100/person/session"
+      },
+      {
+        "name": "Yoga & Meditation",
+        "shortDescription": "Combine movement and mindfulness to relax, strengthen, and refresh.",
+        "detailedDescription": "Yoga & Meditation is a holistic practice combining physical postures, breathing exercises, and mindfulness meditation to improve both mental and physical health. It reduces stress, anxiety, and tension; improves concentration and memory retention; enhances flexibility, strength, and posture; regulates breathing and heart rate; and promotes overall calmness and positivity.",
+        "howItWorks": "Certified instructors conduct sessions in campus open spaces or halls. Each session includes 5 minutes of breathing (pranayama) to centre the mind, 20 minutes of yoga postures (asanas) for flexibility and health, and 10 minutes of guided meditation for relaxation and clarity.",
+        "benefits": [
+          "Reduces stress, anxiety, and tension",
+          "Improves concentration and memory retention",
+          "Enhances flexibility, strength, and posture",
+          "Regulates breathing and heart rate",
+          "Promotes overall calmness and positivity"
+        ],
+        "price": "₹750/session"
+      }
+    ]
+  } 

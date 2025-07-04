@@ -131,7 +131,7 @@
   // Fetch services data on page load
   window.addEventListener('DOMContentLoaded', async () => {
     try {
-      const response = await fetch('../unity-mind-body-backend/services.json');
+      const response = await fetch('data/services.json');
       servicesData = await response.json();
     } catch (error) {
       console.error('Error loading services data:', error);

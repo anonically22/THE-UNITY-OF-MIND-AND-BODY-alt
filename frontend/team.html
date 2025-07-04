@@ -82,7 +82,7 @@
 
     window.addEventListener('DOMContentLoaded', async () => {
       try {
-        const response = await fetch('../unity-mind-body-backend/team.json');
+        const response = await fetch('data/team.json');
         const data = await response.json();
         
         const teamGrid = document.getElementById('team-grid');
