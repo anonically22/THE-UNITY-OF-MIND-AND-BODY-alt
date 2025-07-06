@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
 import path from 'path';
+import fs from 'fs';
 
 import authRoutes from './routes/auth.js';
 import bookingsRoutes from './routes/bookings.js';
@@ -95,6 +96,35 @@ app.delete('/api/admin/resources/:id', adminMiddleware, async (req, res) => {
   const { error } = await supabase.from('resources').delete().eq('id', id);
   if (error) return res.status(400).json({ error: error.message });
   res.json({ message: 'Resource deleted' });
+});
+
+// Serve static JSON data endpoints
+app.get('/api/about_us', (req, res) => {
+  fs.readFile(path.join(__dirname, 'about_us.json'), 'utf8', (err, data) => {
+    if (err) return res.status(500).json({ error: 'Failed to load about_us.json' });
+    res.type('application/json').send(data);
+  });
+});
+
+app.get('/api/team', (req, res) => {
+  fs.readFile(path.join(__dirname, 'team.json'), 'utf8', (err, data) => {
+    if (err) return res.status(500).json({ error: 'Failed to load team.json' });
+    res.type('application/json').send(data);
+  });
+});
+
+app.get('/api/services', (req, res) => {
+  fs.readFile(path.join(__dirname, 'services.json'), 'utf8', (err, data) => {
+    if (err) return res.status(500).json({ error: 'Failed to load services.json' });
+    res.type('application/json').send(data);
+  });
+});
+
+app.get('/api/get_support', (req, res) => {
+  fs.readFile(path.join(__dirname, 'get_support.json'), 'utf8', (err, data) => {
+    if (err) return res.status(500).json({ error: 'Failed to load get_support.json' });
+    res.type('application/json').send(data);
+  });
 });
 
 const PORT = process.env.PORT || 5000;

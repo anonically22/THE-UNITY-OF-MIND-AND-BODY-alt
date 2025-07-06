@@ -1,0 +1,1 @@
+fetch('https://the-unity-of-mind-and-body.onrender.com/resources.json') 
