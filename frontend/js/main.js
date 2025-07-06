@@ -58,13 +58,13 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Update logout logic to redirect to home.html and set thank you flag
+// Update logout logic to redirect to index.html and set thank you flag
 function handleLogout() {
   localStorage.removeItem('token');
   localStorage.removeItem('userName');
   localStorage.removeItem('role');
   localStorage.setItem('showThankYou', '1');
-  window.location.href = 'home.html';
+  window.location.href = 'index.html';
 }
 
 // Attach to all logout buttons if present
@@ -76,8 +76,8 @@ window.addEventListener('DOMContentLoaded', () => {
       handleLogout();
     };
   }
-  // Show thank you message on home.html if flag is set
-  if (window.location.pathname.endsWith('home.html') && localStorage.getItem('showThankYou')) {
+  // Show thank you message on index.html if flag is set
+  if (window.location.pathname.endsWith('index.html') && localStorage.getItem('showThankYou')) {
     const thankYouDiv = document.createElement('div');
     thankYouDiv.textContent = 'Thank you for using our services!';
     thankYouDiv.style.cssText = 'background:#A4CCD9;color:#222;font-size:1.2rem;padding:1.2rem 2rem;border-radius:1.2rem;box-shadow:0 2px 12px rgba(34,34,34,0.07);text-align:center;max-width:400px;margin:2rem auto 0 auto;z-index:1000;position:relative;';

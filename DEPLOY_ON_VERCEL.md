@@ -70,7 +70,7 @@ THE-UNITY-OF-MIND-AND-BODY-alt/
 ## 4. Routing Tips
 - All frontend links should use `/frontend/filename.html` (as you have).
 - API routes should use `/api/feedback`, `/api/auth`, etc.
-- If you want pretty URLs (e.g., `/` instead of `/frontend/home.html`), use Vercel's [Rewrites](https://vercel.com/docs/projects/project-configuration#rewrites) in `vercel.json`.
+- If you want pretty URLs (e.g., `/` instead of `/frontend/index.html`), use Vercel's [Rewrites](https://vercel.com/docs/projects/project-configuration#rewrites) in `vercel.json`.
 
 ---
 
